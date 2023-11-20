@@ -1,0 +1,371 @@
+﻿@model RiceStore.Models.ProDetailViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<head>
+    <style>
+        body {
+            margin: 0px
+        }
+
+        .html {
+            font-family: Arial,Arial, Helvetica, sans-serif;
+        }
+
+        #header {
+            height: 150px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            background-color: #9D9999;
+            box-sizing: border-box;
+            padding: 0px 20px;
+            position: fixed;
+            align-items: center;
+            top: 0;
+        }
+
+        #nav1 {
+            padding: 15px;
+            gap: 10px;
+            display: flex;
+        }
+
+        #nav {
+            list-style-type: none;
+            padding: 15px;
+            gap: 30px;
+            display: flex;
+        }
+
+            #nav li {
+                padding: 0 15px;
+            }
+
+                #nav li a {
+                    text-decoration: none;
+                    font-size: 23px;
+                    color: white;
+                    transition: 0.3s ease;
+                }
+
+                    #nav li a:hover {
+                        color: rgb(0, 0, 0, 0.87);
+                        font-weight: 200;
+                        border-bottom: 2px solid #000;
+                    }
+
+        #nav-img {
+            height: 50px;
+            margin: 0;
+            flex-wrap: nowrap;
+        }
+
+        #nav1 {
+            list-style-type: none;
+        }
+
+        #content {
+            width: 100%;
+            height: 1990px;
+            background-color: rgb(0, 0, 0, 0.00);
+            background-image: url('../img/267816895_1312172982539293_8764849665576484717_n 1.png');
+            text-align: center;
+            font-size: 30px;
+            margin-top: 150px;
+        }
+
+        .list-pro {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            padding: 30px;
+        }
+
+        .box-dos {
+            font-family: 'Roboto', sans-serif;
+            font-size: 50px;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .box-das {
+            background-color: #6FE864;
+            width: 150px;
+            height: 30px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .box-pro {
+            width: 200px;
+            height: 250px;
+            background-color: darkkhaki;
+            border-radius: 15px;
+        }
+
+            .box-pro:hover {
+                opacity: 0.5;
+            }
+
+        .box-img {
+            width: 150px;
+            height: 150px;
+        }
+
+        .fm-size-img {
+            width: 200px;
+            height: 250px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .fm-size-img {
+            width: 200px;
+            height: 250px;
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .box-des {
+            padding: 15px;
+            text-align: center;
+            height: 15px;
+        }
+
+            .box-des p {
+                font-size: 20px;
+                margin: 0;
+            }
+
+        .btn-Cart {
+            display: flex;
+            gap: 20px;
+        }
+
+        .congtru button {
+            border: 1px solid #00E833
+        }
+
+            .congtru button:hover {
+                opacity: 0.5;
+                transition: 0.3s;
+            }
+
+        .congtru input {
+            border: 1px solid #00E833;
+            text-align: center;
+            width: 50px;
+        }
+
+        .add button {
+            border: 1px solid #00E833;
+            font-size: 20px;
+            height: 40px;
+        }
+
+            .add button:hover {
+                opacity: 0.5;
+                transition: 0.3s;
+            }
+
+        #All {
+            padding-left: 45%;
+        }
+
+        .box-das:hover {
+            opacity: 0.5;
+        }
+
+        .total-top {
+            display: flex;
+            justify-content: space-evenly;
+            padding-top: 5%;
+            padding-left: 50px;
+        }
+
+        .ltn {
+            font-size: larger;
+            text-align: start;
+            text-align: start;
+        }
+
+        .btk {
+            width: 400px;
+            padding-left: 0px;
+            font-size: 20px;
+            text-align: start;
+            color: gray;
+            list-style-type: none;
+        }
+
+        .bvk {
+            font-family: 'Roboto', sans-serif;
+            font-size: 20px;
+            text-align: start;
+            margin: 0px;
+            margin-bottom: 10px;
+        }
+
+        .khanh {
+            color: red;
+            margin: 0px;
+            text-align: start;
+            font-family: 'Roboto', sans-serif;
+            border-top: 1px solid #6C6A6A;
+        }
+
+        .an {
+            display: flex;
+            font-size: 15px;
+            padding-bottom: 15px;
+            padding-top: 15px;
+            font-size: large;
+            font-family: 'Roboto', sans-serif;
+            gap: 5px;
+        }
+
+        .yen {
+            width: 60%;
+            height: 50px;
+            font-size: 15px;
+            text-align: start;
+            margin: 0px;
+            flex-wrap: wrap;
+            font-size: large;
+            font-family: 'Roboto', sans-serif;
+            padding-bottom: 15px;
+        }
+
+        .hung {
+            width: 395px;
+            height: 580px;
+            background-color: lightgray;
+            border-radius: 30px;
+        }
+
+        .khoa {
+            width: 370px;
+            font-size: 15px;
+            text-align: start;
+            padding: 10px;
+            padding-left: 20px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .le {
+            font-family: 'Roboto', sans-serif;
+            font-size: larger;
+            text-align: center;
+            text-align: center;
+            padding: 4%;
+        }
+
+        #footer {
+            width: 100%;
+            height: 358px;
+            background-color: #2F412A;
+            float: left;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            flex-wrap: wrap;
+        }
+
+        .Information {
+            width: 100%;
+            justify-content: space-around;
+            display: flex;
+        }
+
+        .Info {
+            list-style-type: none;
+            height: 100px;
+            width: auto;
+            padding-left: 10px;
+        }
+
+        .Info-2 {
+            list-style-type: none;
+            height: 100px;
+            width: auto;
+        }
+
+        .box-bottom li {
+            color: #D3D0D0;
+            list-style-type: none;
+        }
+
+        .box-bottom {
+            width: 80%;
+            height: 50px;
+            border-top: 1px solid #000;
+            border-color: #D3D0D0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        #bot-tt {
+            justify-content: space-between;
+            padding: 0;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+    <div id="content">
+        <div class="total-top">
+            <div class="img">
+                <img src="@Url.Content(Model.ProImage)" style="width:500px" />
+            </div>
+            <div class="sanpham">
+                <p class="ltn" style="margin:0">
+                    @Html.DisplayFor(model => model.ProName)
+                </p>
+                <ul class="btk">
+                    <li>Thông tin sản phẩm</li>
+                    <li>
+                        @Html.DisplayFor(model => model.NameDecription)
+                    </li>
+                </ul>
+                <p class="bvk">
+                    Khối lượng
+                    <input type="number" />
+                    kg
+                </p>
+
+
+                <p class="khanh">99,999đ</p>
+                <div class="btn-Cart">
+                    <div class="congtru">
+                        <button class="minus" onclick="handleMinus()" style="background-color: #6FE864">-</button>
+                        <input class="num" style="background-color: #00E833" name="amount" type="text" value="1" id="amount" />
+                        <button class="plus" onclick="handlePlus()" style="background-color: #6FE864">+</button>
+                    </div>
+                    <div class="add"><button style="background-color: #00E833" type="submit">Thêm vào giỏ hàng</button></div>
+
+                </div>
+                <script src="~/Scripts/MinusPlú.js"></script>
+
+                <div class="an">
+
+                    <img src="~/img/car icon.png" width="20" height="20" />
+                    Đặt online giao tận nhà ĐÚNG GIỜ trong vòng 45 phút
+                </div>
+                <div class="yen">
+                    (*) Giữ hóa đơn chứ công ty để được đổi sản phẩm trong 48h tiếp theo
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

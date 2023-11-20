@@ -1,0 +1,59 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model PagedList.IPagedList<RiceStore.Models.ProDetailViewModel>
+
+@{
+    ViewBag.Title = "SanPham";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+<head>
+    <style>
+        .block-product {
+            background-color: yellow;
+            width: 300px;
+            height: 400px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .context {
+            margin: auto;
+        }
+
+            .context h5 {
+                text-align: center;
+            }
+
+            .context h2 {
+                text-align: center;
+            }
+            .link{
+                height:400px;
+            }
+    </style>
+</head>
+<body>
+
+
+<div class="container">
+    <div class="row-cols-3">
+            @foreach (var item in Model)
+            {
+                <div class="block-product">
+
+                    <img class="prod-img" style=" max-width: 300px; max-height: 300px;" src="@Url.Content(item.ProImage)" />
+                    @Html.ActionLink(" ", "Details", new { id = item.ProID }, new { @class = "link" })
+                    <div class="context">
+                        <h5> @Html.DisplayFor(modelItem => item.ProName)</h5>
+                        <h2>@Html.DisplayFor(modelItem => item.Price)</h2>
+                    </div>
+                </div>
+            }
+     </div>      
+ </div>
+  
+    
+
+@Html.PagedListPager(Model, page => Url.Action("SanPham", new { page, pageSize = 10 }))
+        </body>

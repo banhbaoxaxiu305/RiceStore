@@ -1,0 +1,46 @@
+﻿@model RiceStore.Models.Order
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi tiết đơn hàng</h2>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            MÃ ĐƠN HÀNG
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(modelItem => modelItem.OrderID)
+        </dd>
+        <dt>
+            TÊN KHÁCH HÀNG
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(modelItem => modelItem.Customer.CusName)
+        </dd>
+        <dt>
+            NGÀY MUA
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(modelItem => modelItem.OrderDate)
+        </dd>
+        <dt>
+            TỔNG TIỀN
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(modelItem => modelItem.TotalValue)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
